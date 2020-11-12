@@ -1,17 +1,29 @@
 const fetch = require('node-fetch')
 const cheerio = require('cheerio')
+const axios = require('axios')
 const scraper = {}
 
-scraper.scrape = (url) => {
+scraper.scrape = (data) => {
     console.log('Hello?')
-    fetch(url)
-        .then(res => res.text())
-        .then(html => function () {
-            console.log(html)
-            let $ = cheerio.load(html)
-            let list = $('ul.dropdown-manu.inner.li')
-            console.log(list)
-        });
+    axios({
+        method: 'post',
+        url: data.url,
+        headers: {
+            'User-Agent': process.env.USER_AGENT
+        },
+        data: {
+            golfID: '97015-038',
+            password: data.password,
+            remember: false
+        }
+    })
+        .then(response => {
+            console.log(response)
+            console.log(response.headers);
+        })
+        .catch(error => {
+            console.log(error)
+        })
 }
 
 module.exports = scraper

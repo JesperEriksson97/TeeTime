@@ -26,9 +26,12 @@ teeTimeController.getAvailableTeeTimes = (req, res) => {
     let last_name = req.body.last_name
     let golf_id = req.body.golf_id
     let player_size = req.body.golf_id
-
+    let password = process.env.MYGOLF_PASSWORD
+    console.log(password)
+    let url = 'https://mingolf.golf.se/handlers/login'
+    let data = { golf_id, password, url }
     // Here we should gather the free times.
-    scraper.scrape('https://mingolf.golf.se/Site/Booking?');
+    scraper.scrape(data);
 
     res.render('layouts/availableTimes', {
         first_name: first_name,

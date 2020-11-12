@@ -1,4 +1,5 @@
 const express = require('express')
+require('dotenv').config()
 const hbs = require('express-hbs')
 const bodyParser = require('body-parser')
 const { join } = require('path')
