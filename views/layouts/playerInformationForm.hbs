@@ -1,0 +1,23 @@
+{{> header}}
+
+<div id="form2-container">
+    <form method="POST" action="/tee-time/get-available-times">
+        {{#each playerSize}}
+        <label>Player {{this}}</label>
+        <br>
+        <label for="first_name">First name: </label>
+        <input type="text" id="first_name" name="first_name" />
+        <br>
+        <label for="last_name">Last name: </label>
+        <input type="text" id="last_name" name="last_name" />
+        <br>
+        <label for="golf_id">GolfID: </label>
+        <input type="text" id="golf_id" name="golf_id" />
+        <br>
+        <br>
+        {{/each}}
+        {{#if playerSize}}
+        <input type="submit" value="Go">
+        {{/if}}
+    </form>
+</div>

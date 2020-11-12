@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({
 }))
 
 app.engine('hbs', hbs.express4({ // view engine that lets us use handlebars
-    defaultLayout: join(__dirname, 'views', 'layouts', 'default'),
+    // defaultLayout: join(__dirname, 'views', 'layouts', 'default'),
     partialsDir: join(__dirname, 'views', 'partials/')
 }))
 
