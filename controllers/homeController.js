@@ -1,7 +1,7 @@
 const homeController = {}
 
+// This is the controller that delegates work from requests routed by the Router.
 homeController.index = function (req, res) {
-    console.log('Works')
     res.render("layouts/default")
 }
 
