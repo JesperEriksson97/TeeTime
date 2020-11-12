@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({
 
 app.engine('hbs', hbs.express4({ // view engine that lets us use handlebars
     defaultLayout: join(__dirname, 'views', 'layouts', 'default'),
-    partialsDir: join(__dirname, 'views', 'partials')
+    partialsDir: join(__dirname, 'views', 'partials/')
 }))
 
 app.use(express.urlencoded({ extended: false }))
@@ -23,6 +23,11 @@ app.set('view engine', 'hbs')
 app.set('views', join(__dirname, 'views'))
 
 app.use('/', require('./routes/homeRouter'))
+app.use('/tee-time', require('./routes/teeTimesRouter'))
+
+app.use('*', (req, res, next) => {
+    res.send('Oops! 404: Cant find the requested resource... Sorry')
+})
 
 app.listen(DEVELOPMENT_PORT, () => {
     console.log(`Server up and running on port ${DEVELOPMENT_PORT}`)
